@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Dados / CSVs pesados
+data/*.csv
+
+# Streamlit
+.streamlit/
