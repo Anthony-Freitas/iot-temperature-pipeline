@@ -38,7 +38,7 @@ git clone https://github.com/Anthony-Freitas/iot-temperature-pipeline.git
 cd iot-temperature-pipeline
 
 ### 3. Subir o Contêiner PostgreSQL no Docker
-docker run --name postgres-iot -e POSTGRES_PASSWORD=sua_senha -e POSTGRES_DB=iot_db -p 5432:5432 -d postgres
+docker run --name postgres-iot -e POSTGRES_PASSWORD=iot123 -e POSTGRES_DB=iot_db -p 5432:5432 -d postgres
 
 ### 4. Instalar as Dependências do Python
 pip install -r requirements.txt
