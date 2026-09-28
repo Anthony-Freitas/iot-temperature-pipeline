@@ -1,3 +1,3 @@
 ## Dependências
 
-pip install pandas, sqlalchemy, psycopg2-binary, psycopg, streamlit, plotly
+pandas, sqlalchemy, psycopg2-binary, psycopg, streamlit, plotly

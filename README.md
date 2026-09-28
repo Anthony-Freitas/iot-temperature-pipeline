@@ -1,86 +1,76 @@
-# 🌡️ Pipeline de Dados IoT com Docker, PostgreSQL e Streamlit
+# 🌡️ Pipeline de Dados IoT & Dashboard de Temperaturas
 
-Este projeto consiste em um pipeline de dados completo para processar, armazenar e visualizar dados de sensores de temperatura IoT. O projeto foi desenvolvido como entregável da disciplina Disruptive Architectures: IoT, Big Data e IA da UniFECAF.
+Este projeto consiste em um pipeline de dados de ponta a ponta para ingestão, processamento, armazenamento e visualização de leituras de temperatura provenientes de dispositivos IoT. O projeto foi desenvolvido para a disciplina de Disruptive Architectures: IoT, Big Data e IA da UniFECAF.
+
+🔗 Repositório: https://github.com/Anthony-Freitas/iot-temperature-pipeline
+
+---
+
+## 📐 Arquitetura da Solução
+
+1. Ingestão e Processamento (Python & Pandas): Leitura e tratamento do conjunto de dados Temperature Readings: IoT Devices do Kaggle.
+2. Armazenamento (PostgreSQL em Docker): Banco de dados relacional executado em um contêiner isolado via Docker.
+3. Agregação de Dados (SQL Views): Criação de views analíticas para consulta rápida de métricas e padrões de temperatura.
+4. Visualização (Streamlit & Plotly): Painel interativo com gráficos de barras e linhas para suporte à tomada de decisão.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* Python 3.12 (Pandas, SQLAlchemy, Psycopg2, Streamlit, Plotly)
-* Docker & PostgreSQL
-* Git & GitHub
-* Dataset: Temperature Readings - IoT Devices (Kaggle)
+* Linguagem: Python
+* Banco de Dados: PostgreSQL
+* Containerização: Docker
+* Bibliotecas Python: pandas, sqlalchemy, psycopg2-binary, streamlit, plotly
+* IDE & Ferramentas: Visual Studio Code, Git, GitHub
 
 ---
 
-## 📂 Estrutura do Projeto
 
-iot-temperature-pipeline/
-│
-├── .gitignore
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   └── IOT-temp.csv
-│
-├── docs/
-│   └── dashboard_screenshot.png
-│
-├── sql/
-│   └── views.sql
-│
-└── src/
-    ├── pipeline.py
-    ├── create_views.py
-    └── dashboard.py
-
----
-
-## ⚙️ Como Executar o Projeto
+## 🚀 Como Executar o Projeto
 
 ### 1. Pré-requisitos
-Certifique-se de ter instalado em sua máquina:
-* Python 3.9+
-* Docker Desktop
-* Git
+* Git instalado
+* Docker Desktop em execução
+* Python 3.9 ou superior
 
 ### 2. Clonar o Repositório
-git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
-cd NOME_DO_REPOSITORIO
+git clone https://github.com/Anthony-Freitas/iot-temperature-pipeline.git
+cd iot-temperature-pipeline
 
-### 3. Subir o Banco de Dados PostgreSQL (Docker)
-Execute o comando para iniciar o contêiner do PostgreSQL:
+### 3. Subir o Contêiner PostgreSQL no Docker
 docker run --name postgres-iot -e POSTGRES_PASSWORD=sua_senha -e POSTGRES_DB=iot_db -p 5432:5432 -d postgres
 
-### 4. Instalar as Dependências Python
+### 4. Instalar as Dependências do Python
 pip install -r requirements.txt
 
-### 5. Ingestão de Dados e Criação das Views
-Execute os scripts na ordem abaixo:
+### 5. Executar o Pipeline de Dados (Carga no Banco)
+python src/pipeline.py
 
-1. Carga dos dados no PostgreSQL:
-   python src/pipeline.py
+### 6. Criar as Views Analíticas no PostgreSQL
+python src/create_views.py
 
-2. Criação das Views de agregação:
-   python src/create_views.py
-
-### 6. Executar o Dashboard Interativo
+### 7. Iniciar o Dashboard Interativo
 streamlit run src/dashboard.py
-
-O dashboard será aberto automaticamente no seu navegador no endereço http://localhost:8501.
 
 ---
 
 ## 📊 Views SQL Criadas
 
-1. avg_temp_por_dispositivo: Calcula a temperatura média registrada por dispositivo.
-2. leituras_por_hora: Agrupa o volume de leituras efetuadas por hora do dia para análise de tráfego.
-3. temp_max_min_por_dia: Mapeia as variações térmicas extremas (mínima e máxima) ao longo dos dias.
+1. avg_temp_por_dispositivo: Calcula a temperatura média registrada por cada dispositivo IoT.
+2. leituras_por_hora: Agrupa a contagem total de registros por hora do dia para analisar picos de atividade.
+3. temp_max_min_por_dia: Exibe as temperaturas máxima e mínima diárias para monitoramento de variação térmica.
 
 ---
 
-## 💡 Insights Obtidos
+## 📸 Demonstração e Visualizações
 
-* Volume Diurno: Identificação dos horários de pico nas leituras dos sensores IoT.
-* Estabilidade Térmica: Análise gráfica para monitoramento de desvios e picos anômalos de temperatura por data.
+### Visualização das Views no VS Code
+![Consultas SQL no VS Code](docs/views_sql.png)
+
+![Docker rodando](docs/docker_running.png)
+
+### Dashboard Interativo Streamlit
+![Dashboard Streamlit](docs/dashboard.png)
+
+---
+*Projeto desenvolvido por Anthony Freitas - UniFECAF*
