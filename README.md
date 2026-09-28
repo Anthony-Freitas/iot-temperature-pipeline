@@ -74,4 +74,3 @@ streamlit run src/dashboard.py
 ![Dashboard Streamlit](docs/dashboard.png)
 
 ---
-*Projeto desenvolvido por Anthony Freitas*
