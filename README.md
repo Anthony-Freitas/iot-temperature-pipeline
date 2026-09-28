@@ -67,6 +67,7 @@ streamlit run src/dashboard.py
 ### Visualização das Views no VS Code
 ![Consultas SQL no VS Code](docs/views_sql.png)
 
+### Visualização do container no docker
 ![Docker rodando](docs/docker_running.png)
 
 ### Dashboard Interativo Streamlit
